@@ -16,6 +16,7 @@ body {
   color: #777;
   background-color: #f7f7f7;
   padding: 2rem;
+  overflow: hidden;
 }
 
 .header {
@@ -78,6 +79,7 @@ body {
       color: #fff;
       text-transform: uppercase;
       backface-visibility: hidden;
+      margin-bottom: 6rem;
 
       .heading_primary--main {
         animation: moveInLeft 1s ease-out;
@@ -93,6 +95,25 @@ body {
         font-weight: 700;
         letter-spacing: 1.5rem;
       }
+    }
+    .btn:link,
+    .btn:visited {
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      display: inline-block;
+      border-radius: 10rem;
+      transition: all 0.2s;
+      &:hover {
+        transform: translate(0, -3px);
+      }
+      &:active {
+        transform: translate(0, 1px);
+      }
+    }
+    .btn-white {
+      background-color: #fff;
+      color: #777;
     }
   }
 }
