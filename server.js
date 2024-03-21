@@ -30,6 +30,16 @@ app.use(function (req, res, next) {
   res.status(404).render("404");
 });
 
-db.connectToDatabase().then(function () {
-  app.listen(3005);
-});
+// db.connectToDatabase().then(function () {
+//   app.listen(3005);
+// });
+
+async function startApp() {
+  try {
+    await db.connectToDatabase();
+    app.listen(3005);
+  } catch (error) {
+    console.log(error);
+  }
+}
+startApp();

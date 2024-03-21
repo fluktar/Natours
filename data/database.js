@@ -14,6 +14,7 @@
 const mongodb = require("mongodb");
 const password = require("./password");
 const url = `mongodb+srv://fluktar:${password}@cluster0.xw4ekbx.mongodb.net/?retryWrites=true&w=majority`;
+// const url = "mongodb://localhost:27017";
 
 const MongoClient = mongodb.MongoClient;
 let database;
