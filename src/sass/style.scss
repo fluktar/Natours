@@ -1,18 +1,24 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 :root {
   --light_green: 126, 213, 111;
   --medium_green: 85, 197, 122;
   --dark_green: 40, 180, 133;
 }
+html {
+  font-size: 62.5%;
+}
 body {
+  box-sizing: border-box;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: #777;
   background-color: #f7f7f7;
   padding: 2rem;
@@ -33,10 +39,10 @@ body {
   position: relative;
   .logo_box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
     .logo {
-      height: 35px;
+      height: 3.5rem;
       fill: #fff;
     }
   }
@@ -120,12 +126,14 @@ body {
       border-radius: 10rem;
       transition: all 0.2s;
       position: relative;
+      font-size: 1.6rem;
+
       &:hover {
-        transform: translate(0, -3px);
+        transform: translate(0, -0.3rem);
         box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
       }
       &:active {
-        transform: translate(0, 1px);
+        transform: translate(0, 0.1rem);
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
       }
     }
