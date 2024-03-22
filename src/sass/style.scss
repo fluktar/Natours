@@ -37,11 +37,11 @@ body {
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   position: relative;
-  .logo_box {
+  .header__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem;
-    .logo {
+    .header__logo {
       height: 3.5rem;
       fill: #fff;
     }
@@ -85,27 +85,27 @@ body {
     }
   }
 
-  .text-box {
+  .header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
 
-    .heading_primary {
+    .heading__primary {
       color: #fff;
       text-transform: uppercase;
       backface-visibility: hidden;
       margin-bottom: 6rem;
 
-      .heading_primary--main {
+      .heading__primary--main {
         animation: moveInLeft 1s ease-out;
         display: block;
         font-size: 6rem;
         font-weight: 400;
         letter-spacing: 3rem;
       }
-      .heading_primary--sub {
+      .heading__primary--sub {
         animation: moveInRight 1s ease-out;
         display: block;
         font-size: 4rem;
@@ -113,7 +113,7 @@ body {
         letter-spacing: 1.5rem;
       }
     }
-    .btn-animated {
+    .btn--animated {
       animation: moveInButton 0.5s ease-out 0.75s;
       animation-fill-mode: backwards;
     }
@@ -153,12 +153,12 @@ body {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0;
     }
-    .btn-white {
+    .btn--white {
       background-color: #fff;
       color: #777;
-    }
-    .btn-white::after {
-      background-color: #fff;
+      &::after {
+        background-color: #fff;
+      }
     }
   }
 }
