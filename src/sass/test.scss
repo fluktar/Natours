@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --color-primary: #9ed69e;
+}
+@mixin clearFix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+$color-primary-light: #c5f5b69d;
+$color-primary-dark: #869e6b;
+$color-primary-dark-1: #6b839e;
+$color-text-dark: #333;
+nav {
+  margin: 30px;
+  background-color: var(--color-primary);
+  background-color: $color-primary-light;
+  text-align: center;
+  padding: 3rem;
+
+  @include clearFix;
+
+  .navigation {
+    li {
+      display: inline-block;
+      margin: 0 30px;
+      height: 5vh;
+
+      &:first-child {
+        margin-left: 0;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        color: $color-primary-dark;
+        transition: all 0.2s;
+        &:hover {
+          color: $color-primary-dark-1;
+          font-size: large;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+  .button {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--color-primary);
+    background-color: $color-primary-light;
+    color: white;
+    color: $color-primary-dark;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    transition: all 0.2s;
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      color: $color-primary-dark-1;
+      transition: all 0.2s;
+      text-transform: uppercase;
+
+      cursor: pointer;
+      &:hover {
+        color: $color-primary-dark;
+        background-color: darken($color: $color-primary-dark, $amount: 25%);
+        border-radius: 15px;
+        padding: 2rem;
+      }
+    }
+  }
+}
