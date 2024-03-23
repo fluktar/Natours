@@ -9,6 +9,7 @@
   --light_green: 126, 213, 111;
   --medium_green: 85, 197, 122;
   --dark_green: 40, 180, 133;
+  --color-white: #fff;
 }
 html {
   font-size: 62.5%;
@@ -43,7 +44,7 @@ body {
     left: 4rem;
     .header__logo {
       height: 3.5rem;
-      fill: #fff;
+      fill: var(--color-white);
     }
   }
 
@@ -93,7 +94,7 @@ body {
     text-align: center;
 
     .heading__primary {
-      color: #fff;
+      color: var(--color-white);
       text-transform: uppercase;
       backface-visibility: hidden;
       margin-bottom: 6rem;
@@ -154,10 +155,10 @@ body {
       opacity: 0;
     }
     .btn--white {
-      background-color: #fff;
+      background-color: var(--color-white);
       color: #777;
       &::after {
-        background-color: #fff;
+        background-color: var(--color-white);
       }
     }
   }

@@ -1,8 +1,6 @@
 import gulp from "gulp";
 import fs from "fs";
 import cleanCSS from "gulp-clean-css";
-// import sassPackage from 'gulp-sass';
-// import sassCompiler from 'sass';
 import sass from "gulp-dart-sass";
 import uglify from "gulp-uglify";
 import fileInclude from "gulp-file-include";
@@ -15,9 +13,17 @@ import imageminPngquant from "imagemin-pngquant";
 import imageminSvgo from "imagemin-svgo";
 import { createServerFile } from "./createServerFile.mjs";
 import nodemon from "nodemon";
+import { promisify } from "util";
+import { exec as childExec } from "child_process";
+import ncu from "npm-check-updates";
+import zip from "gulp-zip";
+import path from "path";
+import { fileURLToPath } from "url";
+import { createFiles } from "./createFiles.mjs";
+
 const browserSync = browserSyncPackage.create();
 const browserSyncServer = browserSyncPackage.create();
-// const sass = sassPackage(sassCompiler);
+const exec = promisify(childExec);
 
 const compressImages = () => {
   return gulp
@@ -114,8 +120,6 @@ const checkFoldersExist = () => {
   });
 };
 
-import { createFiles } from "./createFiles.mjs";
-
 const checkFoldersAndFiles = (done) => {
   createFolders(done);
   createFiles(done);
@@ -179,16 +183,11 @@ const watch = () => {
   gulp.watch("src/php/**/*.php", checkPHP);
   gulp.watch("src/img/**/*", copyImages);
   gulp.watch("./*.html").on("change", browserSync.reload);
-  gulp.watch("src/sass/**/*.scss,").on("change", browserSync.reload);
+  gulp.watch("src/sass/**/*.scss").on("change", browserSync.reload);
+  gulp.watch("src/js/**/*.js").on("change", browserSync.reload);
 };
 
 // ---------------------------------------------------------------
-
-import { promisify } from "util";
-import { exec as childExec } from "child_process";
-import ncu from "npm-check-updates";
-
-const exec = promisify(childExec);
 
 async function checkPackageUpdates() {
   try {
@@ -212,19 +211,6 @@ async function checkPackageUpdates() {
     );
   }
 }
-
-// ------------------------------------------------------------
-
-gulp.task("checkPackageUpdates", checkPackageUpdates);
-
-// --------------------------------------------------------------
-
-// PROJEKT BACKUP
-// --------------------------------------------------------------
-// --------------------------------------------------------------
-import zip from "gulp-zip";
-import path from "path";
-import { fileURLToPath } from "url";
 
 async function backupProject() {
   const currentPath = fileURLToPath(import.meta.url);
@@ -278,19 +264,34 @@ async function backupProject() {
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
+
+function compileEjs() {
+  return gulp
+    .src(["html/**/*.kit", "!html/**/_*.kit"])
+    .pipe(
+      fileInclude({
+        prefix: "@@",
+        basepath: "@file",
+      })
+    )
+    .pipe(rename({ extname: ".ejs" })) // Change the extension to .ejs
+    .pipe(gulp.dest("views")) // Copy to views folder in the root directory
+    .pipe(browserSync.stream());
+
+  // .on("end", function () {
+  //   browserSync.reload();
+  // });
+}
+
 gulp.task("compressImages", compressImages);
 gulp.task("optimizeImages", optimizeImages);
-
 gulp.task("backup", backupProject);
 gulp.task("checkFoldersAndFiles", checkFoldersAndFiles);
 gulp.task("compileKit", gulp.series("checkFoldersAndFiles", compileKit));
 gulp.task("minifyCSS", minifyCSS);
 gulp.task("minifyJS", minifyJS);
-// gulp.task("compileEjs", compileEjs);
 gulp.task("compileEjs", gulp.series("checkFoldersAndFiles", compileEjs));
 gulp.task("checkPHP", checkPHP);
-// zadanie do uruchamiania serwera za pomocą nodemon
-
 gulp.task("start-server", function (done) {
   nodemon({
     script: "server.js",
@@ -309,30 +310,13 @@ gulp.task("start-server", function (done) {
   })
     .on("restart", function () {
       console.log("Server restarted!");
+      browserSync.reload();
     })
     .once("start", done);
 });
-
-function compileEjs() {
-  return gulp
-    .src(["html/**/*.kit", "!html/**/_*.kit"])
-    .pipe(
-      fileInclude({
-        prefix: "@@",
-        basepath: "@file",
-      })
-    )
-    .pipe(rename({ extname: ".ejs" })) // Change the extension to .ejs
-    .pipe(gulp.dest("views")) // Copy to views folder in the root directory
-    .pipe(browserSync.stream());
-}
-
-gulp.task("watch", function () {
-  watch("server.js", function () {
-    gulp.series("start-server")();
-  });
-});
 gulp.task("copyImages", copyImages);
+gulp.task("createServerFile", createServerFile);
+gulp.task("checkPackageUpdates", checkPackageUpdates);
 gulp.task(
   "watch",
   gulp.series(
@@ -344,10 +328,7 @@ gulp.task(
     "checkPHP",
     "optimizeImages",
     "start-server",
-    "watch",
     watch
   )
 );
-
-gulp.task("createServerFile", createServerFile);
 gulp.task("default", gulp.series("createServerFile", "watch"));
