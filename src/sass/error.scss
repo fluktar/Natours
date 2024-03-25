@@ -1,13 +1,19 @@
-h1 {
-  color: red;
-  font-size: 10rem;
-  text-align: center;
-  margin-top: 20rem;
-  margin-bottom: 10rem;
-}
-p {
-  color: red;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 10rem;
+body {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
+  h1 {
+    color: red;
+    font-size: 10rem;
+    text-align: center;
+    margin-top: 20rem;
+    margin-bottom: 10rem;
+  }
+  p {
+    color: red;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10rem;
+  }
 }
