@@ -1,8 +1,7 @@
 node_modules
-	dist
-	instrukcja
-	
-	
-
-	
+	src
+	html
+	gulpfile.mjs
+	package.json
+	package-lock.json
 	*.log
