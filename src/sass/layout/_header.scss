@@ -2,8 +2,8 @@
   height: 94vh;
   background-image: linear-gradient(
       to right bottom,
-      rgba(var(--light_green), 0.8),
-      rgba(var(--medium_green), 0.8)
+      rgba($light_green, 0.8),
+      rgba($dark_green, 0.8)
     ),
     url(../img/hero.jpg);
   background-size: cover;
@@ -16,7 +16,7 @@
     left: 4rem;
     .header__logo {
       height: 3.5rem;
-      fill: var(--color-white);
+      fill: $color-white; // Dodano średnik
     }
   }
 
@@ -28,7 +28,7 @@
     text-align: center;
 
     .header__primary {
-      color: var(--color-white);
+      color: $color-white; // Dodano średnik
       text-transform: uppercase;
       backface-visibility: hidden;
       margin-bottom: 6rem;

@@ -17,7 +17,7 @@
 
     &:hover {
       transform: translate(0, -0.3rem);
-      box-shadow: 0 1rem 2rem rgba(var(--color-black), 0.2);
+      box-shadow: 0 1rem 2rem $color-black 0.2;
       &::after {
         transform: scaleX(1.4) scaleY(1.6);
         opacity: 0;
@@ -25,7 +25,7 @@
     }
     &:active {
       transform: translate(0, 0.1rem);
-      box-shadow: 0 0.5rem 1rem rgba(var(--color-black), 0.2);
+      box-shadow: 0 0.5rem 1rem $color-black 0.2;
     }
   }
   &::after {
@@ -43,10 +43,10 @@
 }
 
 .btn--white {
-  background-color: var(--color-white);
+  background-color: $color-white;
   color: #777;
 
   &::after {
-    background-color: var(--color-white);
+    background-color: $color-white;
   }
 }
