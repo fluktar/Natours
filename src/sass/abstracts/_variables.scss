@@ -3,7 +3,15 @@ $medium_green: rgb(126, 213, 111);
 $dark_green: rgb(40, 180, 133);
 $color-white: rgb(255, 255, 255);
 $color-black: rgb(0, 0, 0);
-$color-gray-light-1: rgb(247, 247, 247);
+$color-gray-light-1: #f6f6f6;
+
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$box-shadow-1: 0 1.5rem 4rem rgba($color-black, 0.15);
 
 $grid-width: 114rem;
 $gutter-vertical: 8rem;
