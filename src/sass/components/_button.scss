@@ -51,6 +51,15 @@
   }
 }
 
+.btn--green {
+  background-color: $light_green;
+  color: $color-white;
+
+  &::after {
+    background-color: $light_green;
+  }
+}
+
 .btn-text {
   &:link,
   &:visited {
