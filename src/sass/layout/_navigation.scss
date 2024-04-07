@@ -11,6 +11,7 @@
     right: 6rem;
     border-radius: 50%;
     z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
   }
   &__background {
     height: 6rem;
@@ -21,15 +22,20 @@
     right: 6.5rem;
     z-index: 1000;
     background-image: radial-gradient($light_green, $dark_green);
-    transform: scale(80);
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    // transform: scale(80);
   }
   &__nav {
     height: 100vh;
     width: 100%;
+
     position: fixed;
     top: 0;
-    left: 0;
+    left: -30rem;
     z-index: 1500;
+    opacity: 0;
+    width: 0;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   }
   &__list {
     @include center;
@@ -71,5 +77,14 @@
       color: $color-dark-grey;
       transform: translateX(1rem);
     }
+  }
+  &__checkbox:checked ~ &__background {
+    scale: 80;
+    transition: all 0.8s;
+  }
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+    left: 0;
   }
 }
