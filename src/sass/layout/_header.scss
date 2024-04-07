@@ -10,7 +10,12 @@
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
   position: relative;
-  .header__logo-box {
+
+  @include respond(phone) {
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
+  &__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem;
@@ -20,7 +25,7 @@
     }
   }
 
-  .header__text-box {
+  &__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -39,6 +44,10 @@
         font-size: 6rem;
         font-weight: 400;
         letter-spacing: 3rem;
+        @include respond(phone) {
+          letter-spacing: 1rem;
+          font-size: 4rem;
+        }
       }
       &--sub {
         animation: moveInRight 1s ease-out;
@@ -46,6 +55,10 @@
         font-size: 4rem;
         font-weight: 700;
         letter-spacing: 1.5rem;
+        @include respond(phone) {
+          letter-spacing: 0.5rem;
+          font-size: 4rem;
+        }
       }
     }
   }
