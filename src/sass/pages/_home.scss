@@ -71,8 +71,16 @@
     background-image: linear-gradient(
         105deg,
         rgba($color-white, 0.9) 0%,
-        rgba($color-white, 0.9) 70%,
-        transparent 70%
+        rgba($color-white, 0.9) 65%,
+        transparent 65%
+      ),
+      url(../img/nat-10.jpg);
+  }
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-white, 0.9) 0,
+        rgba($color-white, 0.9) 100%
       ),
       url(../img/nat-10.jpg);
   }
@@ -82,6 +90,9 @@
     padding: 6rem;
     @include respond(tab-land) {
       width: 70%;
+    }
+    @include respond(tab-port) {
+      width: 100%;
     }
   }
 }
