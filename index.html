@@ -19,7 +19,9 @@
   <body>
     <div class="navigation">
       <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
-      <label for="navi-toggle" class="navigation__button">MENU</label>
+      <label for="navi-toggle" class="navigation__button">
+        <span class="navigation__icon">&nbsp;</span>
+      </label>
       <div class="navigation__background">&nbsp;</div>
       <nav class="navigation__nav">
         <ul class="navigation__list">
@@ -438,6 +440,38 @@
         </div>
       </div>
     </footer>
+
+    <div class="popup" id="popup">
+      <div class="popup__content">
+        <div class="popup__left">
+          <img
+            class="popup__img"
+            src="../dist/img/nat-8.jpg"
+            alt="tour photo"
+          /><img
+            class="popup__img"
+            src="../dist/img/nat-9.jpg"
+            alt="tour photo"
+          />
+        </div>
+        <div class="popup__right">
+          <a href="#section-tours" class="popup__close">&times;</a>
+          <h2 class="heading-secondary u-margin-bottom-small">
+            Strat booking now
+          </h2>
+          <h3 class="heading-tertiary u-margin-bottom-small">
+            Important &ndash; Please read these terms before booking
+          </h3>
+          <p class="popup__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+            quisquam ab praesentium ex nihil velit libero quasi, laboriosam
+            tempore Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+            consectetur
+          </p>
+          <a href="#" class="btn btn--green">Book now</a>
+        </div>
+      </div>
+    </div>
     <!--  <div class="grid-test">
       <div class="row">
         <div class="col-1-of-2">col 1 of 2</div>
