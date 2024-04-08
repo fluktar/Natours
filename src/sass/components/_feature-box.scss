@@ -24,7 +24,9 @@
     background-clip: text;
     color: transparent;
     @include respond(tab-port) {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
     }
   }
   &:hover {
